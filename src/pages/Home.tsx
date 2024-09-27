@@ -1,19 +1,8 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonLabel } from '@ionic/react';
-import { useEffect, useState } from 'react';
-import { getCotizaciones } from '../services/DolarApi'
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import Cotizaciones from '../components/Cotizaciones';
 import './Home.css';
 
 const Home: React.FC = () => {
-  const [cotizaciones, setCotizaciones] = useState<any[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getCotizaciones();
-      setCotizaciones(data);
-    };
-    fetchData();
-  }, []);
-
   return (
     <IonPage>
       <IonHeader>
@@ -28,21 +17,8 @@ const Home: React.FC = () => {
           </IonToolbar>
         </IonHeader>
 
-        <div className="cotizaciones-section">
-          <IonList>
-            {cotizaciones.length ? (
-              cotizaciones.map((cotizacion) => (
-                <IonItem key={cotizacion.nombre}>
-                  <IonLabel>
-                    {cotizacion.nombre}: Compra {cotizacion.compra} - Venta {cotizacion.venta}
-                  </IonLabel>
-                </IonItem>
-              ))
-            ) : (
-              <IonLabel>Cargando cotizaciones...</IonLabel>
-            )}
-          </IonList>
-        </div>
+        {/* Insertamos el componente modularizado de Cotizaciones */}
+        <Cotizaciones />
       </IonContent>
     </IonPage>
   );
