@@ -1,0 +1,7 @@
+{
+  "name": "dolar-gaucho",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
